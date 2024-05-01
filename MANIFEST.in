@@ -1,0 +1,3 @@
+
+include ./projectaria_eyetracking/inference/model/pretrained_weights/social_eyes_uncertainty_v1/*.pth
+include ./projectaria_eyetracking/inference/model/pretrained_weights/social_eyes_uncertainty_v1/*.yaml

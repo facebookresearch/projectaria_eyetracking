@@ -1,0 +1,34 @@
+name: Test model inference
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  setup-and-run-inference:
+    name: Test model inference
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+      - name: Setup pip and install required python packages
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install easydict pyyaml torch torchvision projectaria_tools
+      - name: Get data to run inference on (a Project Aria VRS file)
+        run: |
+          sudo apt-get install wget
+          wget -L https://github.com/facebookresearch/projectaria_tools/raw/main/data/mps_sample/sample.vrs
+      - name: Run inference loop
+        run: |
+          rerun analytics disable
+          cd projectaria_eyetracking
+          python3 model_inference_demo.py --vrs ../sample.vrs

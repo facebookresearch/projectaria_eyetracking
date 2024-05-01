@@ -1,0 +1,15 @@
+---
+MODEL:
+  BACKBONE:
+    type: ResNetSocialEye
+  HEAD:
+    final_height_width: [1, 1]
+    type: social_eye
+  arch: resnet-18
+  type: CNNModel
+RESIZED_IMAGE_SHAPE: [240, 320]
+SOCIAL_EYE:
+  normalize: true
+STATS:
+  mA: [0.0, 0.0]
+  sA: [1.0, 1.0]
