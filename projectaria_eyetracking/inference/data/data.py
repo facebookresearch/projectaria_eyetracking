@@ -17,7 +17,6 @@ from torchvision import transforms
 
 
 def preprocess_image(et_image, size=(240, 320)):
-
     h, w = et_image.shape
     pred_image = torch.zeros((1, 2, h, w // 2))
 

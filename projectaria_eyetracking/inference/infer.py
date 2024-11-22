@@ -40,7 +40,6 @@ class EyeGazeInference:
     """
 
     def __init__(self, model_checkpoint_path, model_config_path, device="cpu"):
-
         self.model_checkpoint_path = model_checkpoint_path
         self.model_config_path = model_config_path
         self.device = device
@@ -89,7 +88,6 @@ class EyeGazeInference:
         return processed_preds
 
     def predict(self, image):
-
         processed_image = preprocess_image(image, self.config["RESIZED_IMAGE_SHAPE"])
 
         processed_image = (

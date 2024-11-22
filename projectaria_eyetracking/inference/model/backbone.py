@@ -44,7 +44,6 @@ class SplitAndConcat(nn.Module):
         self.chunk = chunk
 
     def forward(self, x):
-
         block_size = int(x.size(dim=self.split_dim) / self.chunk)
         out = torch.narrow(x, self.split_dim, 0, block_size)
         for chunk_id in range(1, self.chunk):

@@ -239,7 +239,6 @@ def main():
                         )
 
             if len(value_mapping) > 0:
-
                 if args.console_only is False:
                     gaze_vector_in_cpf = get_eyegaze_point_at_depth(
                         value_mapping["yaw"], value_mapping["pitch"], depth_m
