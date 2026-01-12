@@ -16,7 +16,6 @@ import torch
 import yaml
 
 from .data.data import preprocess_image
-
 from .model import backbone
 from .model.head import SocialEyePredictionBoundHead
 from .model.model import SocialEyeModel

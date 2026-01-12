@@ -30,7 +30,6 @@ from projectaria_tools.core.mps.utils import get_gaze_vector_reprojection
 from projectaria_tools.core.sensor_data import SensorDataType, TimeDomain
 from projectaria_tools.core.stream_id import StreamId
 from projectaria_tools.utils.rerun_helpers import AriaGlassesOutline
-
 from tqdm import tqdm
 
 

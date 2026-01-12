@@ -19,7 +19,6 @@ import torch
 import torch.nn as nn
 
 from .model_archs import MODEL_ARCH
-
 from .model_utils import Bottleneck, init_weights, NONLINEARITY
 
 
@@ -123,7 +122,7 @@ class SocialEye(nn.Module):
         self.inplanes = first_out_ch
         layers = OrderedDict()
         for i, stage in enumerate(stages):
-            layers[f"layer{i+1}"] = self._make_layer(
+            layers[f"layer{i + 1}"] = self._make_layer(
                 basic_block, planes=stage[0], blocks=stage[1], stride=stage[2]
             )
 
