@@ -5,11 +5,12 @@ Additonally, this code contains tools to visualize the raw and derived gaze data
 
 # Installation & Usage
 
+Requires Python 3.10 or newer.
 
 ## Running from the GitHub repository
 ```
 # Install requirements
-python3 -m pip install easydict pyyaml torch torchvision projectaria_tools
+python3 -m pip install .
 ```
 
 ### Run the demo

@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import math
-from typing import OrderedDict
+from collections import OrderedDict
 
 import torch
 import torch.nn as nn
@@ -200,7 +200,10 @@ def load_checkpoint(
 ):
     map_location = "cpu"
 
-    model_buffer = torch.load(chkpt_path, map_location=map_location)
+    with torch.serialization.safe_globals([(OrderedDict, "easydict.EasyDict")]):
+        model_buffer = torch.load(
+            chkpt_path, map_location=map_location, weights_only=True
+        )
 
     state_dict = model_buffer["model"]
     any_key = next(iter(state_dict.keys()))

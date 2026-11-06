@@ -128,11 +128,11 @@ def main():
 
     if args.console_only is False:
         # Aria coordinate system sets X down, Z in front, Y Left
-        rr.log("device", rr.ViewCoordinates.RIGHT_HAND_X_DOWN, timeless=True)
+        rr.log("device", rr.ViewCoordinates.RIGHT_HAND_X_DOWN, static=True)
         rr.log(
             "device/glasses_outline",
             rr.LineStrips3D(AriaGlassesOutline(device_calibration)),
-            timeless=True,
+            static=True,
         )
 
         # Define Scalar color attributes
@@ -147,8 +147,8 @@ def main():
         for name, color in color_mapping.items():
             rr.log(
                 f"eye_gaze_inference/{name}",
-                rr.SeriesLine(color=color, name=name),
-                timeless=True,
+                rr.SeriesLines(colors=color, names=name),
+                static=True,
             )
 
     depth_m = 1  # 1 m
@@ -208,7 +208,7 @@ def main():
                     for name, value in value_mapping.items():
                         rr.log(
                             f"eye_gaze_inference/{name}",
-                            rr.Scalar(value),
+                            rr.Scalars(value),
                         )
 
             elif data.stream_id() == rgb_stream_id and args.console_only is False:
@@ -218,7 +218,7 @@ def main():
                 )
 
                 if len(value_mapping) > 0:  # If any value previously computed, use it
-                    eye_gaze = EyeGaze
+                    eye_gaze = EyeGaze()
                     eye_gaze.yaw = value_mapping["yaw"]
                     eye_gaze.pitch = value_mapping["pitch"]
                     # Compute eye_gaze vector at depth_m reprojection in the image
