@@ -12,20 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from setuptools import find_namespace_packages, find_packages, setup
+from setuptools import find_namespace_packages, setup
 
 setup(
     name="projectaria_eyetracking",
     version="1.0",
     author="Meta Reality Labs Research",
     license="Apache-2.0",
-    python_requires=">=3.8",
+    python_requires=">=3.10",
     install_requires=[
         "easydict",
         "pyyaml",
-        "torch",
+        "torch>=2.6",
         "torchvision",
         "projectaria_tools",
+        "rerun-sdk>=0.33.0",
     ],
     packages=find_namespace_packages(
         where="./",
@@ -38,6 +39,12 @@ setup(
         ],
     ),
     package_dir={"": "./"},
+    package_data={
+        "projectaria_eyetracking": [
+            "inference/model/pretrained_weights/social_eyes_uncertainty_v1/*.pth",
+            "inference/model/pretrained_weights/social_eyes_uncertainty_v1/*.yaml",
+        ],
+    },
     include_package_data=True,
     entry_points={
         "console_scripts": [

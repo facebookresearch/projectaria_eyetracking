@@ -22,11 +22,11 @@ jobs:
       - name: Setup pip and install required python packages
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install easydict pyyaml torch torchvision projectaria_tools
+          python3 -m pip install .
       - name: Get data to run inference on (a Project Aria VRS file)
         run: |
           sudo apt-get install wget
-          wget -L https://github.com/facebookresearch/projectaria_tools/raw/main/data/mps_sample/sample.vrs
+          wget -L https://github.com/facebookresearch/projectaria_tools/raw/main/data/gen1/mps_sample/sample.vrs
       - name: Run inference loop
         run: |
           rerun analytics disable
